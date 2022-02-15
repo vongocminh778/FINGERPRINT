@@ -1,0 +1,43 @@
+{
+	"folders": [
+		{
+			"path": "15022022_ESP32_D_FP_1"
+		},
+		{
+			"path": "15022022_ESP32_D_FP_2"
+		},
+		{
+			"path": "15022022_ESP32_D_FP_3"
+		},
+		{
+			"path": "15022022_ESP32_D_FP_4"
+		},
+		{
+			"path": "15022022_ESP32_D_FP_5"
+		},
+		{
+			"path": "15022022_ESP32_D_FP_6"
+		},
+		{
+			"name": "15022022_ESP8266_SLAVE_1",
+			"path": "15022022_ESP8266_SLAVE_1"
+		},
+		{
+			"name": "15022022_ESP8266_SLAVE_2",
+			"path": "15022022_ESP8266_SLAVE_2"
+		},
+		{
+			"path": "15022022_ESP8266_SLAVE_3"
+		},
+		{
+			"path": "15022022_ESP8266_SLAVE_4"
+		},
+		{
+			"path": "15022022_ESP8266_SLAVE_5"
+		},
+		{
+			"path": "15022022_ESP8266_SLAVE_6"
+		}
+	],
+	"settings": {}
+}
