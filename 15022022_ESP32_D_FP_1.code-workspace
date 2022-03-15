@@ -37,6 +37,13 @@
 		},
 		{
 			"path": "15022022_ESP8266_SLAVE_6"
+		},
+		{
+			"name": "ESP8266 CSV",
+			"path": "..\\ESP8266 CSV"
+		},
+		{
+			"path": "12032022_ESP32_D_FP_1_V2"
 		}
 	],
 	"settings": {}

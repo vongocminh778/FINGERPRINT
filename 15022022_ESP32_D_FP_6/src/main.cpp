@@ -33,7 +33,7 @@ extern uint8_t rBuf[36864];
 bool flag_finger = false; // flag check status fingerprint sensor
 bool cal_time_1 = false;  // flag check button pressed
 bool flag_mqtt_success = true;
-String messageTemp = ""; // msg callback return
+String messageTemp = "";                       // msg callback return
 String _device_name_master = "D_FP_6";         // Device name
 String _device_name_slave = "ESP8266_SLAVE_6"; // Device name
 String _status1 = "";
