@@ -31,15 +31,15 @@ PubSubClient client(espClient);
 // char const *_Topic_send_master = "esp8266/input/checkstatus/ESP8266_SLAVE_3";
 // char const *_Topic_receive_master = "esp8266/output/checkstatus/ESP8266_SLAVE_3";
 
-// String _device_name_slave = "ESP8266_SLAVE_4";
-// String _device_name_master = "D_FP_4";
-// char const *_Topic_send_master = "esp8266/input/checkstatus/ESP8266_SLAVE_4";
-// char const *_Topic_receive_master = "esp8266/output/checkstatus/ESP8266_SLAVE_4";
+String _device_name_slave = "ESP8266_SLAVE_4";
+String _device_name_master = "D_FP_4";
+char const *_Topic_send_master = "esp8266/input/checkstatus/ESP8266_SLAVE_4";
+char const *_Topic_receive_master = "esp8266/output/checkstatus/ESP8266_SLAVE_4";
 
-String _device_name_slave = "ESP8266_SLAVE_5";
-String _device_name_master = "D_FP_5";
-char const *_Topic_send_master = "esp8266/input/checkstatus/ESP8266_SLAVE_5";
-char const *_Topic_receive_master = "esp8266/output/checkstatus/ESP8266_SLAVE_5";
+// String _device_name_slave = "ESP8266_SLAVE_5";
+// String _device_name_master = "D_FP_5";
+// char const *_Topic_send_master = "esp8266/input/checkstatus/ESP8266_SLAVE_5";
+// char const *_Topic_receive_master = "esp8266/output/checkstatus/ESP8266_SLAVE_5";
 
 // String _device_name_slave = "ESP8266_SLAVE_6";
 // String _device_name_master = "D_FP_6";

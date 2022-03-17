@@ -34,20 +34,20 @@ bool flag_finger = false; // flag check status fingerprint sensor
 bool cal_time_1 = false;  // flag check button pressed
 bool flag_mqtt_success = true;
 String messageTemp = "";                       // msg callback return
-String _device_name_master = "D_FP_5";         // Device name
-String _device_name_slave = "ESP8266_SLAVE_5"; // Device name
+String _device_name_master = "D_FP_4";         // Device name
+String _device_name_slave = "ESP8266_SLAVE_4"; // Device name
 String _status1 = "";
 String _status2 = "";
 int count = 10; // variable check error to restart esp
 
-char const *_Topic_send_callmaintenance = "esp32/input/callmaintenance/D_FP_5";     // send call maintanance
-char const *_Topic_receive_callmaintenance = "esp32/output/callmaintenance/D_FP_5"; // receive call maintanance
+char const *_Topic_send_callmaintenance = "esp32/input/callmaintenance/D_FP_4";     // send call maintanance
+char const *_Topic_receive_callmaintenance = "esp32/output/callmaintenance/D_FP_4"; // receive call maintanance
 
-char const *_Topic_send_cancelmaintenance = "esp32/input/cancelmaintenance/D_FP_5";
-char const *_Topic_receive_cancelmaintenance = "esp32/output/cancelmaintenance/D_FP_5";
+char const *_Topic_send_cancelmaintenance = "esp32/input/cancelmaintenance/D_FP_4";
+char const *_Topic_receive_cancelmaintenance = "esp32/output/cancelmaintenance/D_FP_4";
 
-char const *_Topic_send_slave = "esp8266/output/checkstatus/ESP8266_SLAVE_5";
-char const *_Topic_receive_slave = "esp8266/input/checkstatus/ESP8266_SLAVE_5";
+char const *_Topic_send_slave = "esp8266/output/checkstatus/ESP8266_SLAVE_4";
+char const *_Topic_receive_slave = "esp8266/input/checkstatus/ESP8266_SLAVE_4";
 
 const char *serverName_rawfingerimage = "http://192.168.20.17:2087/api/Fingers/fpimage";
 
