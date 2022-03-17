@@ -46,7 +46,6 @@ char const *_Topic_receive_master = "esp8266/output/checkstatus/ESP8266_SLAVE_5"
 // char const *_Topic_send_master = "esp8266/input/checkstatus/ESP8266_SLAVE_6";
 // char const *_Topic_receive_master = "esp8266/output/checkstatus/ESP8266_SLAVE_6";
 
-
 const char *mqtt_server = "113.161.152.35";
 byte machineStatus1;
 byte machineStatus2;
@@ -209,7 +208,7 @@ void callback(char *topic, byte *message, unsigned int length)
       }
       else if (String(Status1) == "flag0")
       {
-        machineStatus1 = LOW;       
+        machineStatus1 = LOW;
         Flagcheckstatus1 = Status1;
         digitalWrite(PIN1, machineStatus1);
         Serial.println("Line 1 OFF");
@@ -217,11 +216,11 @@ void callback(char *topic, byte *message, unsigned int length)
       if (String(Status2) == "flag1") // light2
       {
         machineStatus2 = HIGH;
-        // Flagcheckstatus2 = (machineStatus2 == HIGH) ? "flag1" : "flag0";        
+        // Flagcheckstatus2 = (machineStatus2 == HIGH) ? "flag1" : "flag0";
         if (machineStatus1 == HIGH)
         {
           machineStatus1 = LOW; // Light B turn ON => Light A turn OFF
-        } 
+        }
         Flagcheckstatus2 = Status2;
         digitalWrite(PIN2, machineStatus2);
         Serial.println("Line 2 ON");
@@ -239,10 +238,6 @@ void callback(char *topic, byte *message, unsigned int length)
         send_data_mqtt(_Topic_send_master, Flagcheckstatus1, Flagcheckstatus2);
         recieve_success = false;
       }
-      // else if(count_times == 2) {
-      //   count_times = 0;
-      //   ;
-      // }
     }
   }
 }
@@ -299,4 +294,3 @@ void reconnect()
     }
   }
 }
-

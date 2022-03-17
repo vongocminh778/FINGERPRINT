@@ -34,17 +34,17 @@ bool flag_finger = false; // flag check status fingerprint sensor
 bool cal_time_1 = false;  // flag check button pressed
 bool flag_mqtt_success = true;
 String messageTemp = "";                       // msg callback return
-String _device_name_master = "D_FP_1";         // Device name
+String _device_name_master = "D_FP_MT_1";      // Device name
 String _device_name_slave = "ESP8266_SLAVE_1"; // Device name
 String _status1 = "";
 String _status2 = "";
 int count = 10; // variable check error to restart esp
 
-char const *_Topic_send_callmaintenance = "esp32/input/callmaintenance/D_FP_1";     // send call maintanance
-char const *_Topic_receive_callmaintenance = "esp32/output/callmaintenance/D_FP_1"; // receive call maintanance
+char const *_Topic_send_callmaintenance = "esp32/input/callmaintenance/D_FP_MT_1";     // send call maintanance
+char const *_Topic_receive_callmaintenance = "esp32/output/callmaintenance/D_FP_MT_1"; // receive call maintanance
 
-char const *_Topic_send_cancelmaintenance = "esp32/input/cancelmaintenance/D_FP_1";
-char const *_Topic_receive_cancelmaintenance = "esp32/output/cancelmaintenance/D_FP_1";
+char const *_Topic_send_cancelmaintenance = "esp32/input/cancelmaintenance/D_FP_MT_1";
+char const *_Topic_receive_cancelmaintenance = "esp32/output/cancelmaintenance/D_FP_MT_1";
 
 char const *_Topic_send_slave = "esp8266/output/checkstatus/ESP8266_SLAVE_1";
 char const *_Topic_receive_slave = "esp8266/input/checkstatus/ESP8266_SLAVE_1";
@@ -231,11 +231,11 @@ void loop()
       delay(1000);
     }
   }
-  if (totalInterruptCounter1 > 10 && flag_mqtt_success == false) // check MQTT receive
-  {
-    send_data_slave(_Topic_send_slave, _status1, _status2); // ON , OFF
-    totalInterruptCounter1 = 0;
-  }
+  // if (totalInterruptCounter1 > 10 && flag_mqtt_success == false) // check MQTT receive
+  // {
+  //   send_data_slave(_Topic_send_slave, _status1, _status2); // ON , OFF
+  //   totalInterruptCounter1 = 0;
+  // }
   /*******************Sleep Mode****************************/
   //  if(totalInterruptCounter > 10){
   //   ++bootCount;
@@ -260,7 +260,7 @@ String send_data_raw_image(uint8_t *payload)
   Serial.println(F("---------------fnsend_data_raw_image---------------"));
   HTTPClient http;
   http.setConnectTimeout(500); // time connection to server
-  http.setTimeout(500);        // time get response from server
+  http.setTimeout(1000);       // time get response from server
   http.begin(serverName_rawfingerimage);
   http.addHeader("Content-Type", "application/octet-stream");
   int httpResponseCode = http.sendRequest("POST", (uint8_t *)payload, 36864);
@@ -440,7 +440,7 @@ void callback(char *topic, byte *message, unsigned int length)
       }
       else if (flag == "flag6")
       {
-        display_oled(2, 6, 10, F("Chua xac nhan bao tri"));
+        display_oled(2, 6, 10, F(" Chua xac  nhan bao    tri"));
         delay(2000);
       }
       else
@@ -455,41 +455,42 @@ void callback(char *topic, byte *message, unsigned int length)
     }
   }
 
-  if (String(topic) == _Topic_receive_slave)
-  {
-    Serial.println("---------------callback from slave---------------");
-    flag_mqtt_success = true;
-    StaticJsonDocument<192> doc;
-    DeserializationError error = deserializeJson(doc, messageTemp);
-    if (error)
-    {
-      Serial.print(F("deserializeJson() failed: "));
-      Serial.println(error.f_str());
-      return;
-    }
+  //  check signal send to slave successfully
+  // if (String(topic) == _Topic_receive_slave)
+  // {
+  //   Serial.println("---------------callback from slave---------------");
+  //   flag_mqtt_success = true;
+  //   StaticJsonDocument<192> doc;
+  //   DeserializationError error = deserializeJson(doc, messageTemp);
+  //   if (error)
+  //   {
+  //     Serial.print(F("deserializeJson() failed: "));
+  //     Serial.println(error.f_str());
+  //     return;
+  //   }
 
-    const char *device_name = doc["device_name"]; // "flag0"
-    const char *status1 = doc["status1"];         // "flag0"
-    const char *status2 = doc["status2"];         // "flag0"
-    Serial.print(F("status1 :"));
-    Serial.println(status1);
-    Serial.print(F("status2 :"));
-    Serial.println(status2);
-    if (_device_name_slave == device_name)
-    {
-      if (String(status1) != _status1 || String(status2) != _status2)
-      {
-        send_data_slave(_Topic_send_slave, _status1, _status2); // ON , OFF
-        Serial.println("---------------------------------");
-        Serial.print(F("status1 :"));
-        Serial.println(String(status1));
-        Serial.print(F("status2 :"));
-        Serial.println(String(status2));
-        flag_mqtt_success = false;
-        totalInterruptCounter1 = 0;
-      }
-    }
-  }
+  //   const char *device_name = doc["device_name"]; // "flag0"
+  //   const char *status1 = doc["status1"];         // "flag0"
+  //   const char *status2 = doc["status2"];         // "flag0"
+  //   Serial.print(F("status1 :"));
+  //   Serial.println(status1);
+  //   Serial.print(F("status2 :"));
+  //   Serial.println(status2);
+  //   if (_device_name_slave == device_name)
+  //   {
+  //     if (String(status1) != _status1 || String(status2) != _status2)
+  //     {
+  //       send_data_slave(_Topic_send_slave, _status1, _status2); // ON , OFF
+  //       Serial.println("---------------------------------");
+  //       Serial.print(F("status1 :"));
+  //       Serial.println(String(status1));
+  //       Serial.print(F("status2 :"));
+  //       Serial.println(String(status2));
+  //       flag_mqtt_success = false;
+  //       totalInterruptCounter1 = 0;
+  //     }
+  //   }
+  // }
 }
 
 // function reconnec when loss signal wifi
