@@ -10,10 +10,10 @@
 // Replace the next variables with your SSID/Password combination
 // const char* ssid = "MI";
 // const char* password = "123456789";
-const char *ssid = "Matsuya MIC";
-const char *password = "M@tsuyaR&D2020";
-// const char *ssid = "Matsuya_R&D_factory";
-// const char *password = "Matsuya@2017";
+// const char *ssid = "Matsuya MIC";
+// const char *password = "M@tsuyaR&D2020";
+const char *ssid = "Matsuya_R&D_factory";
+const char *password = "Matsuya@2017";
 
 const char *mqtt_server = "192.168.1.56";
 
